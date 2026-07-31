@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines a square built on top of Rectangle."""
+"""Module that defines a square with its own description."""
 Rectangle = __import__('9-rectangle').Rectangle
 
 
@@ -19,3 +19,7 @@ class Square(Rectangle):
     def area(self):
         """Return the area of the square."""
         return self.__size * self.__size
+
+    def __str__(self):
+        """Return the square description as [Square] <size>/<size>."""
+        return "[Square] {}/{}".format(self.__size, self.__size)
