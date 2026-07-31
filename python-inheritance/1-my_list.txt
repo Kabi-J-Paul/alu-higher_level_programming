@@ -1,0 +1,71 @@
+The ``1-my_list`` module
+========================
+
+Using ``MyList``
+----------------
+
+Import the class:
+
+    >>> MyList = __import__('1-my_list').MyList
+
+``MyList`` inherits from ``list``:
+
+    >>> issubclass(MyList, list)
+    True
+
+A new ``MyList`` starts empty:
+
+    >>> my_list = MyList()
+    >>> print(my_list)
+    []
+    >>> my_list.print_sorted()
+    []
+
+``print_sorted`` prints the elements in ascending order and leaves the
+original list untouched:
+
+    >>> my_list = MyList([1, 4, 2, 3, 5])
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+It works with the inherited ``append`` method too:
+
+    >>> my_list = MyList()
+    >>> my_list.append(7)
+    >>> my_list.append(-3)
+    >>> my_list.append(0)
+    >>> my_list.print_sorted()
+    [-3, 0, 7]
+
+Negative numbers are sorted like any other integer:
+
+    >>> my_list = MyList([-5, -9, -1])
+    >>> my_list.print_sorted()
+    [-9, -5, -1]
+
+A list already sorted stays the same:
+
+    >>> my_list = MyList([1, 2, 3])
+    >>> my_list.print_sorted()
+    [1, 2, 3]
+
+A single element:
+
+    >>> my_list = MyList([42])
+    >>> my_list.print_sorted()
+    [42]
+
+Duplicated values are all kept:
+
+    >>> my_list = MyList([2, 1, 2])
+    >>> my_list.print_sorted()
+    [1, 2, 2]
+
+``print_sorted`` takes no extra argument:
+
+    >>> my_list = MyList([1, 2])
+    >>> my_list.print_sorted(3)  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+    TypeError
