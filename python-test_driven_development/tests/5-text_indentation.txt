@@ -1,0 +1,72 @@
+The ``5-text_indentation`` module
+=================================
+
+Using ``text_indentation``
+--------------------------
+
+Import the function:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Each of the three characters is followed by two new lines:
+
+    >>> text_indentation("Hello. World? Yes: done")
+    Hello.
+    <BLANKLINE>
+    World?
+    <BLANKLINE>
+    Yes:
+    <BLANKLINE>
+    done
+
+Spaces after a separator are removed:
+
+    >>> text_indentation("First.     Second.")
+    First.
+    <BLANKLINE>
+    Second.
+    <BLANKLINE>
+
+A text with no separator is printed as is:
+
+    >>> text_indentation("No separator here")
+    No separator here
+
+An empty string prints nothing:
+
+    >>> text_indentation("")
+
+A single separator:
+
+    >>> text_indentation(":")
+    :
+    <BLANKLINE>
+
+Other punctuation is not a separator:
+
+    >>> text_indentation("Wait, and stop!")
+    Wait, and stop!
+
+A number is not a string:
+
+    >>> text_indentation(12)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+A list is not a string:
+
+    >>> text_indentation(["Hello"])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+None is not a string:
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+No argument at all:
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
